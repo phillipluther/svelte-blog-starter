@@ -1,24 +1,12 @@
-<header>
-	<p>GLobal Header</p>
+<script>
+	import Header from '$lib/components/Header.svelte';
+	import '$lib/styles/global.css';
+</script>
 
-	<nav>
-		<ul>
-			<li>
-				<a href="/">Home</a>
-			</li>
-			<li>
-				<a href="/blog">Blog</a>
-			</li>
-			<li>
-				<a href="/error">Error</a>
-			</li>
-			<li>
-				<a href="/not-found">404</a>
-			</li>
-		</ul>
-	</nav>
-</header>
+<Header />
 
-<slot />
+<main>
+	<slot />
+</main>
 
-<style></style>
+<footer>Global Footer</footer>
