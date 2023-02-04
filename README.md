@@ -1,38 +1,7 @@
-# create-svelte
+# phillipluther/svelte-play
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+The context and repo name seem self explanatory, but just in case … this is a git repository hosted on GitHub containing a collection of files that are the result of some guy named Phillip Luther goofballin' around with a JavaScript library called Svelte via SvelteKit, Svelte's kit for bootstrapping web applications.
 
-## Creating a project
+…
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Word on the street is that he (Phil) digs Svelte(Kit) so far.
