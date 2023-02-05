@@ -4,10 +4,14 @@ import { getMarkdownPosts } from '$lib/utils';
 export async function GET() {
 	try {
 		const posts = await getMarkdownPosts();
-		// TODO … sorting? filtering?
-		return json(posts);
+
+		const tags = posts.reduce(function (acc, post) {
+			return acc.concat(post.metadata.tags);
+		}, []);
+
+		return json([...new Set(tags)]);
 	} catch (err) {
-		console.error('Caught error (add error handling)');
+		console.error('Could not GET tags');
 		throw err;
 	}
 }

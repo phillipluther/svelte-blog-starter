@@ -1,6 +1,9 @@
 export async function load({ fetch }) {
-	const res = await fetch('/api/posts');
-	const posts = await res.json();
+	const postsRes = await fetch('/api/posts');
+	const tagsRes = await fetch('/api/tags');
 
-	return { posts };
+	const posts = await postsRes.json();
+	const tags = await tagsRes.json();
+
+	return { posts, tags };
 }

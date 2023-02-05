@@ -2,6 +2,10 @@
 title: A Frontmatter Title From Markdown Using Dynamic Routes
 description: A description from frontmatter; this should "just work"
 published: 2022-01-29
+tags:
+  - blog post
+  - development
+  - unique
 ---
 
 # Markdown Working?

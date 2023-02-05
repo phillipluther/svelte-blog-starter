@@ -14,8 +14,7 @@ export async function load({ params }) {
 			content: post.default
 		};
 	} catch (err) {
-		console.log('Caught dynamic route error:');
-		// console.error(err);
+		console.err('Caught dynamic route error:');
 		throw err;
 	}
 }
