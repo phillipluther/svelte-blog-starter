@@ -1,9 +1,9 @@
 import { json } from '@sveltejs/kit';
-import { getMarkdownPosts } from '$lib/utils';
+import { getPostSummaries } from '$lib/utils';
 
 export async function GET() {
 	try {
-		const posts = await getMarkdownPosts();
+		const posts = await getPostSummaries();
 
 		const tags = posts.reduce(function (acc, post) {
 			return acc.concat(post.metadata.tags);

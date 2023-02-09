@@ -1,11 +1,15 @@
-export async function getMarkdownPosts() {
+export async function getFullPosts() {
 	try {
 		const postFiles = Object.entries(import.meta.glob('/src/routes/blog/*.md'));
 		const allPosts = await Promise.all(
 			postFiles.map(async function ([path, resolver]) {
-				const { metadata } = await resolver();
+				const {
+					metadata,
+					default: { render }
+				} = await resolver();
 
 				return {
+					content: render().html,
 					metadata,
 					path: path.slice(11, -3)
 				};
@@ -14,7 +18,23 @@ export async function getMarkdownPosts() {
 
 		return allPosts;
 	} catch (err) {
-		console.error('Failed to get posts');
+		console.error('Failed to get all posts');
+		throw err;
+	}
+}
+
+export async function getPostSummaries() {
+	try {
+		const allPosts = await getFullPosts();
+
+		return allPosts.map(function ({ metadata, path }) {
+			return {
+				metadata,
+				path
+			};
+		});
+	} catch (err) {
+		console.error('Failed to get post summaries');
 		throw err;
 	}
 }

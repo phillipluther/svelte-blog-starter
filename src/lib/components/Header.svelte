@@ -10,6 +10,9 @@
 			<li>
 				<a href="/about">About</a>
 			</li>
+			<li>
+				<a href="/rss">RSS Feed</a>
+			</li>
 		</ul>
 	</nav>
 </header>
