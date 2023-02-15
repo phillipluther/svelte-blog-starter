@@ -1,6 +1,10 @@
 <script>
+	import PageMeta from '$lib/components/PageMeta.svelte';
+
 	export let data;
 </script>
+
+<PageMeta title="All Blog Posts" />
 
 <h1>Blog!</h1>
 

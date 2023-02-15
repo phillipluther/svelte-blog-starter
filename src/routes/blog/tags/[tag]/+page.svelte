@@ -1,7 +1,10 @@
 <script>
+	import PageMeta from '$lib/components/PageMeta.svelte';
+
 	export let data;
 </script>
 
+<PageMeta title={`Posts Tagged as "${data.tag}"`} />
 <h1>{data.tag}</h1>
 <ul>
 	{#each data.posts as post}

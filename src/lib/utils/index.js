@@ -1,3 +1,5 @@
+import { titleCase } from 'title-case';
+
 export async function getFullPosts() {
 	try {
 		const postFiles = Object.entries(import.meta.glob('/src/routes/blog/*.md'));
@@ -37,4 +39,9 @@ export async function getPostSummaries() {
 		console.error('Failed to get post summaries');
 		throw err;
 	}
+}
+
+export function getPageNameFromRoute(route) {
+	const slug = route.split('/').pop();
+	return titleCase(slug);
 }
