@@ -1,7 +1,9 @@
-# phillipluther/svelte-play
+# phillipluther/svelte-blog-template
 
-The context and repo name seem self explanatory, but just in case … this is a git repository hosted on GitHub containing a collection of files that are the result of some guy named Phillip Luther goofballin' around with a JavaScript library called Svelte via SvelteKit, Svelte's kit for bootstrapping web applications.
+A (deeply) personal blog starter using SvelteKit, which I find cool and fun to work with. Posts are written in markdown because of course they are.
 
-…
+It's intended to be a site + blog, actually, so blog post URLs include a `/blog` subfolder in the path.
 
-Word on the street is that he (Phil) digs Svelte(Kit) so far.
+## Motivation
+
+I have big plans to write a lot of blog posts about a lot of things on myriad topics. Frankly … I probably won't; but I plan to! I'm hoping this project can be a jumping-off point to launch blogs and start writing and fuss less with tech stack and fuss more with content.
