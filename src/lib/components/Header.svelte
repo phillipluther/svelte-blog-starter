@@ -11,7 +11,7 @@
 				<a href="/about">About</a>
 			</li>
 			<li>
-				<a href="/rss">RSS Feed</a>
+				<a data-sveltekit-reload href="/rss">RSS Feed</a>
 			</li>
 		</ul>
 	</nav>
