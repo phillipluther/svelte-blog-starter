@@ -7,21 +7,21 @@ import autoprefixer from 'autoprefixer';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	kit: {
-		adapter: adapter()
-	},
-	extensions: ['.svelte', '.md'],
-	preprocess: [
-		vitePreprocess({
-			postcss: {
-				plugins: [autoprefixer]
-			}
-		}),
-		mdsvex({
-			extensions: ['.md'],
-			rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings]
-		})
-	]
+  kit: {
+    adapter: adapter(),
+  },
+  extensions: ['.svelte', '.md'],
+  preprocess: [
+    vitePreprocess({
+      postcss: {
+        plugins: [autoprefixer],
+      },
+    }),
+    mdsvex({
+      extensions: ['.md'],
+      rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
+    }),
+  ],
 };
 
 export default config;

@@ -18,6 +18,6 @@ Oh, but wait! Make sure code blocks/syntax highlighting works, too.
 var useVar = true;
 
 if (useVar) {
-	console.log('OMG you noob using var let const not var booooooo');
+  console.log('OMG you noob using var let const not var booooooo');
 }
 ```

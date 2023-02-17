@@ -3,18 +3,18 @@
  * could be called anything, but params[anything] will reference [anything] folder
  */
 export async function load({ params }) {
-	try {
-		const post = await import(`../${params.slug}.md`);
-		const { title, description, published } = post.metadata;
+  try {
+    const post = await import(`../${params.slug}.md`);
+    const { title, description, published } = post.metadata;
 
-		return {
-			title,
-			description,
-			published,
-			content: post.default
-		};
-	} catch (err) {
-		console.err('Caught dynamic route error:');
-		throw err;
-	}
+    return {
+      title,
+      description,
+      published,
+      content: post.default,
+    };
+  } catch (err) {
+    console.err('Caught dynamic route error:');
+    throw err;
+  }
 }
