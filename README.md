@@ -1,8 +1,12 @@
-# phillipluther/svelte-blog-template
+# phillipluther/svelte-blog-starter
 
 A (deeply) personal blog starter using SvelteKit, which I find cool and fun to work with. Posts are written in markdown because of course they are.
 
 It's intended to be a site + blog, actually, so blog post URLs include a `/blog` subfolder in the path.
+
+## Usage
+
+Clone the repo, then manually edit what needs editing. How stone age.
 
 ## Motivation
 

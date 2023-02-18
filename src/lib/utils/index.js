@@ -2,7 +2,7 @@ import { titleCase } from 'title-case';
 
 export async function getFullPosts() {
   try {
-    const postFiles = Object.entries(import.meta.glob('/src/routes/blog/*.md'));
+    const postFiles = Object.entries(import.meta.glob('/src/lib/posts/*.md'));
     const allPosts = await Promise.all(
       postFiles.map(async function ([path, resolver]) {
         const {
@@ -13,11 +13,12 @@ export async function getFullPosts() {
         return {
           content: render().html,
           metadata,
-          path: path.slice(11, -3),
+          path: `/blog/${getSlugFromPath(path)}`
         };
       }),
     );
 
+    console.log('All posts', allPosts);
     return allPosts;
   } catch (err) {
     console.error('Failed to get all posts');
@@ -42,6 +43,10 @@ export async function getPostSummaries() {
 }
 
 export function getPageNameFromRoute(route) {
-  const slug = route.split('/').pop();
-  return titleCase(slug);
+  return titleCase(getSlugFromPath(route));
+}
+
+export function getSlugFromPath(filePath) {
+  const maybeSlug = filePath.split('/').pop();
+  return /\.md$/.test(maybeSlug) ? maybeSlug.slice(0, -3) : maybeSlug;
 }
