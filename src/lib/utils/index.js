@@ -13,12 +13,11 @@ export async function getFullPosts() {
         return {
           content: render().html,
           metadata,
-          path: `/blog/${getSlugFromPath(path)}`
+          path: `/blog/${getSlugFromPath(path)}`,
         };
       }),
     );
 
-    console.log('All posts', allPosts);
     return allPosts;
   } catch (err) {
     console.error('Failed to get all posts');
@@ -43,7 +42,8 @@ export async function getPostSummaries() {
 }
 
 export function getPageNameFromRoute(route) {
-  return titleCase(getSlugFromPath(route));
+  const cleanedHyphenRoute = route.replace(/-/g, ' ');
+  return titleCase(getSlugFromPath(cleanedHyphenRoute));
 }
 
 export function getSlugFromPath(filePath) {
