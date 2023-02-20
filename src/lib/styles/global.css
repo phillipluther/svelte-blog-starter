@@ -3,30 +3,22 @@ html {
 }
 
 body {
-  margin: 0 auto;
-  max-width: 640px;
-  background: #f0f0f0;
+  margin: 0;
   font-family: sans-serif;
 }
 
-.icon-link {
-  position: relative;
+.container {
+  padding: 16px;
 }
 
-.icon-link::before {
-  content: "#";
-  position: absolute;
-  left: -1ch;
-  top: 0;
-  line-height: 1;
-  opacity: 0;
-  text-decoration: underline;
+@media (min-width: 390px) {
+  .container {
+    padding: 24px;
+  }
 }
 
-h1:hover .icon-link::before,
-h2:hover .icon-link::before,
-h3:hover .icon-link::before,
-h4:hover .icon-link::before,
-h5:hover .icon-link::before {
-  opacity: 1;
+@media (min-width: 620px) {
+  .container {
+    padding: 32px;
+  }
 }

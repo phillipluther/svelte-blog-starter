@@ -1,5 +1,7 @@
 import { titleCase } from 'title-case';
 
+export { default as portalize } from './portalize';
+
 export async function getFullPosts() {
   try {
     const postFiles = Object.entries(import.meta.glob('/src/lib/posts/*.md'));

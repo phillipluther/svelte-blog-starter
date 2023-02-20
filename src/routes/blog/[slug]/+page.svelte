@@ -1,5 +1,6 @@
 <script>
   import PageMeta from '$lib/components/PageMeta.svelte';
+  import '$lib/styles/blog-posts.css';
 
   /**
    * another Svelte newb reminder; props and params coming in from the corresponding
