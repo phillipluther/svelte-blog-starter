@@ -1,47 +1,37 @@
 <script>
-  import { portalize } from '$lib/utils';
   import PrimaryNav from './PrimaryNav.svelte';
   import VisuallyHidden from './VisuallyHidden.svelte';
-  import Obscure from './Obscure.svelte';
 
-  let isShowing = false;
+  import Drawer, { Content, Header, Title, Subtitle, Scrim } from '@smui/drawer';
+
+  let open = false;
 
   function toggleMenu() {
-    isShowing = !isShowing;
+    open = !open;
   }
 </script>
 
-<header class="wrapper container">
-  <button class="toggle" class:toggled={isShowing} on:click={toggleMenu}>
-    <VisuallyHidden>{isShowing ? 'Close' : 'Open'} Navigation Menu</VisuallyHidden>
+<header class="wrapper container main-content">
+  <button class="toggle" class:toggled={open} on:click={toggleMenu}>
+    <VisuallyHidden>{open ? 'Close' : 'Open'} Navigation Menu</VisuallyHidden>
     <span class="hamburger" />
   </button>
-
-  <Obscure show={isShowing} />
-
-  <div use:portalize class="menu" class:showing={isShowing}>
-    <PrimaryNav />
-  </div>
 </header>
 
+<Drawer variant="modal" bind:open bottom>
+  <!-- <Header>
+    <Title>My Blog Name</Title>
+    <Subtitle>My blog's pithy tagline</Subtitle>
+  </Header>
+ -->
+  <Content>
+    <PrimaryNav />
+  </Content>
+</Drawer>
+
+<Scrim />
+
 <style>
-  .menu {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    z-index: 10;
-    width: 100%;
-    background: lightgray;
-    transition: transform 240ms, opacity 210ms;
-    opacity: 0;
-    transform: translate3d(0, 100%, 0);
-  }
-
-  .menu.showing {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-
   .toggle {
     border: 0;
     border-radius: 50%;
