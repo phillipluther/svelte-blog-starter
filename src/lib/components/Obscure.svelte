@@ -13,7 +13,7 @@
     height: 1px;
     width: 1px;
     background: rgba(0, 0, 0, 0.7);
-    transition: opacity 180ms ease-in;
+    transition: opacity 120ms ease-out, height 0ms ease 120ms, width 0ms ease 120ms;
     opacity: 0;
   }
 
@@ -21,5 +21,6 @@
     width: 100vw;
     height: 100vh;
     opacity: 1;
+    transition: opacity 120ms ease-in;
   }
 </style>
