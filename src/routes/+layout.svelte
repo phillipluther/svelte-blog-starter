@@ -6,7 +6,7 @@
   export let data;
 </script>
 
-<Header />
+<Header isHome={data.currentRoute == '/'} />
 
 {#key data.currentRoute}
   <main in:fade={{ duration: 99, delay: 99 }} out:fade={{ duration: 99 }}>

@@ -6,4 +6,4 @@
 </script>
 
 <div bind:clientWidth={w} />
-<svelte:component this={w < 620 ? ModalNav : InlineNav} />
+<svelte:component this={!w || w < 620 ? ModalNav : InlineNav} />
