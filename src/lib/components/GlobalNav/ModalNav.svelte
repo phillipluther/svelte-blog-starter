@@ -1,28 +1,38 @@
 <script>
+  import { onMount } from 'svelte';
   import { portal } from 'svelte-portal';
   import PrimaryNavLinks from '$lib/components/PrimaryNavLinks.svelte';
-  import SocialNavLinks from '$lib/components/SocialNavLinks.svelte';
+  import FollowLinks from '$lib/components/FollowLinks.svelte';
   import VisuallyHidden from '$lib/components/VisuallyHidden.svelte';
   import Obscure from '$lib/components/Obscure.svelte';
 
-  let isShowing = false;
+  let showMenu = false;
+  let showControls = false;
 
   function toggleMenu() {
-    isShowing = !isShowing;
+    showMenu = !showMenu;
   }
+
+  function toggleControls() {
+    showControls = !showControls;
+  }
+
+  onMount(toggleControls);
 </script>
 
-<button class="toggle" class:toggled={isShowing} on:click={toggleMenu}>
-  <VisuallyHidden>{isShowing ? 'Close' : 'Open'} Navigation Menu</VisuallyHidden>
-  <span class="hamburger" />
-</button>
+<div class="controls" class:showing={showControls}>
+  <button class="toggle" class:toggled={showMenu} on:click={toggleMenu}>
+    <VisuallyHidden>{showMenu ? 'Close' : 'Open'} Navigation Menu</VisuallyHidden>
+    <span class="hamburger" />
+  </button>
+</div>
 
-<Obscure show={isShowing} />
+<Obscure show={showMenu} />
 
-<div use:portal={'body'} class="menu" class:showing={isShowing} hidden>
+<div use:portal={'body'} class="menu" class:showing={showMenu} hidden>
   <nav class="nav">
     <PrimaryNavLinks />
-    <SocialNavLinks />
+    <FollowLinks />
   </nav>
 </div>
 
@@ -51,11 +61,20 @@
     width: 64px;
     height: 64px;
     padding: 0;
-    position: absolute;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .controls {
+    position: fixed;
     bottom: 24px;
     right: 24px;
     z-index: 20;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 180ms ease-in;
+    transform: translate3d(0, 200%, 0);
+  }
+
+  .controls.showing {
+    transform: translate3d(0, 0, 0);
   }
 
   .hamburger,

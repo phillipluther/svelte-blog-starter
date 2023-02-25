@@ -2,8 +2,7 @@
   import ModalNav from './ModalNav.svelte';
   import InlineNav from './InlineNav.svelte';
 
-  let w;
+  export let isSmallScreen = true;
 </script>
 
-<div bind:clientWidth={w} />
-<svelte:component this={!w || w < 620 ? ModalNav : InlineNav} />
+<svelte:component this={isSmallScreen ? ModalNav : InlineNav} />

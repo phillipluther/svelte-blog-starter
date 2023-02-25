@@ -1,15 +1,17 @@
 <script>
   import PrimaryNavLinks from '$lib/components/PrimaryNavLinks.svelte';
-  import SocialNavLinks from '$lib/components/SocialNavLinks.svelte';
+  import FollowLinks from '$lib/components/FollowLinks.svelte';
 </script>
 
-<nav>
+<nav class="nav">
   <PrimaryNavLinks />
-  <SocialNavLinks />
-
-  <ul>
-    <li class="item">
-      <a data-sveltekit-reload href="/rss" class="link">RSS Feed</a>
-    </li>
-  </ul>
+  <FollowLinks />
 </nav>
+
+<style>
+  .nav {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+</style>
