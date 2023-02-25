@@ -1,71 +1,70 @@
 <script>
   import { onMount } from 'svelte';
-  import { portal } from 'svelte-portal';
+  import {
+    Dialog,
+    DialogOverlay,
+    DialogTitle,
+    Transition,
+    TransitionChild,
+  } from '@rgossiaux/svelte-headlessui';
   import PrimaryNavLinks from '$lib/components/PrimaryNavLinks.svelte';
   import FollowLinks from '$lib/components/FollowLinks.svelte';
   import VisuallyHidden from '$lib/components/VisuallyHidden.svelte';
-  import Obscure from '$lib/components/Obscure.svelte';
 
-  let showMenu = false;
-  let primaryContent;
+  import '$lib/styles/obscure-animations.css';
+  import '$lib/styles/modal-nav-animations.css';
 
-  function toggleMenu(forceReset = false) {
-    showMenu = forceReset === true ? false : !showMenu;
-
-    if (showMenu) {
-      primaryContent.inert = true;
-      primaryContent.setAttribute('aria-hidden', true);
-    } else {
-      primaryContent.removeAttribute('inert');
-      primaryContent.removeAttribute('aria-hidden');
-    }
-  }
+  let open = false;
 
   function handleSelection(e) {
-    toggleMenu(true);
+    open = false;
   }
 
   onMount(() => {
-    primaryContent = document.getElementById('content');
-
-    toggleMenu(true);
+    open = false;
   });
 </script>
 
-<div class="controls" class:showing={!showMenu}>
-  <button class="toggle" on:click={toggleMenu}>
-    <VisuallyHidden>{showMenu ? 'Close' : 'Open'} Navigation Menu</VisuallyHidden>
+<div class="controls" class:showing={open == false}>
+  <button class="toggle" on:click={() => (open = true)}>
+    <VisuallyHidden>{open ? 'Close' : 'Open'} Navigation Menu</VisuallyHidden>
     <span class="hamburger" />
   </button>
 </div>
 
-<Obscure show={showMenu} />
+<Transition show={open}>
+  <Dialog {open} on:close={() => (open = false)} class="primary-nav-menu">
+    <TransitionChild
+      enter="obscure--enter"
+      enterFrom="obscure--enterFrom"
+      enterTo="obscure--enterTo"
+      leave="obscure--leave"
+      leaveFrom="obscure--leaveFrom"
+      leaveTo="obscure--leaveTo"
+    >
+      <DialogOverlay class="obscure" />
+    </TransitionChild>
 
-<div use:portal={'body'} class="menu" class:showing={showMenu} aria-hidden={!showMenu}>
-  <nav class="nav" hidden={!showMenu}>
-    <PrimaryNavLinks clickHandler={handleSelection} />
-    <FollowLinks />
-  </nav>
-</div>
+    <TransitionChild
+      enter="modal-nav--enter"
+      enterFrom="modal-nav--enterFrom"
+      enterTo="modal-nav--enterTo"
+      leave="modal-nav--leave"
+      leaveFrom="modal-nav--leaveFrom"
+      leaveTo="modal-nav--leaveTo"
+      class="modal-nav"
+    >
+      <DialogTitle>Blog Primary Navigation</DialogTitle>
+
+      <nav class="nav">
+        <PrimaryNavLinks clickHandler={handleSelection} />
+        <FollowLinks />
+      </nav>
+    </TransitionChild>
+  </Dialog>
+</Transition>
 
 <style>
-  .menu {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    z-index: 10;
-    width: 100%;
-    background: lightgray;
-    transition: transform 240ms, opacity 210ms;
-    opacity: 0;
-    transform: translate3d(0, 100%, 0);
-  }
-
-  .menu.showing {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-
   .toggle {
     border: 0;
     border-radius: 50%;
