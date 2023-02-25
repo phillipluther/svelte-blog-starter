@@ -17,12 +17,14 @@
     //   label: 'Contact',
     // },
   ];
+
+  export let clickHandler = () => undefined;
 </script>
 
 <ul class="list">
   {#each primaryNavItems as item}
     <li class="item">
-      <a href={item.href} class="link">{item.label}</a>
+      <a href={item.href} class="link" on:click={clickHandler}>{item.label}</a>
     </li>
   {/each}
 </ul>

@@ -7,21 +7,33 @@
   import Obscure from '$lib/components/Obscure.svelte';
 
   let showMenu = false;
-  let showControls = false;
+  let primaryContent;
 
-  function toggleMenu() {
-    showMenu = !showMenu;
+  function toggleMenu(forceReset = false) {
+    showMenu = forceReset === true ? false : !showMenu;
+
+    if (showMenu) {
+      primaryContent.inert = true;
+      primaryContent.setAttribute('aria-hidden', true);
+    } else {
+      primaryContent.removeAttribute('inert');
+      primaryContent.removeAttribute('aria-hidden');
+    }
   }
 
-  function toggleControls() {
-    showControls = !showControls;
+  function handleSelection(e) {
+    toggleMenu(true);
   }
 
-  onMount(toggleControls);
+  onMount(() => {
+    primaryContent = document.getElementById('content');
+
+    toggleMenu(true);
+  });
 </script>
 
-<div class="controls" class:showing={showControls}>
-  <button class="toggle" class:toggled={showMenu} on:click={toggleMenu}>
+<div class="controls" class:showing={!showMenu}>
+  <button class="toggle" on:click={toggleMenu}>
     <VisuallyHidden>{showMenu ? 'Close' : 'Open'} Navigation Menu</VisuallyHidden>
     <span class="hamburger" />
   </button>
@@ -29,9 +41,9 @@
 
 <Obscure show={showMenu} />
 
-<div use:portal={'body'} class="menu" class:showing={showMenu} hidden>
-  <nav class="nav">
-    <PrimaryNavLinks />
+<div use:portal={'body'} class="menu" class:showing={showMenu} aria-hidden={!showMenu}>
+  <nav class="nav" hidden={!showMenu}>
+    <PrimaryNavLinks clickHandler={handleSelection} />
     <FollowLinks />
   </nav>
 </div>
