@@ -11,8 +11,8 @@
   import FollowLinks from '$lib/components/FollowLinks.svelte';
   import VisuallyHidden from '$lib/components/VisuallyHidden.svelte';
 
-  import '$lib/styles/obscure-animations.css';
-  import '$lib/styles/modal-nav-animations.css';
+  import '$lib/styles/obscure-animations.scss';
+  import '$lib/styles/modal-nav-animations.scss';
 
   // set this on mount to avoid FOUC with the menu controls while determining
   // screen size on desktop; had to add the conditional in the Headless UI
