@@ -32,7 +32,7 @@
     display: inline-block;
     font-size: 1rem;
     font-weight: bold;
-    margin: 0;
+    margin: 0 24px 0 0;
     padding: 0;
   }
 </style>

@@ -14,7 +14,10 @@
   import '$lib/styles/obscure-animations.css';
   import '$lib/styles/modal-nav-animations.css';
 
-  let open = false;
+  // set this on mount to avoid FOUC with the menu controls while determining
+  // screen size on desktop; had to add the conditional in the Headless UI
+  // dialog so it wouldn't whine
+  let open;
 
   function handleSelection(e) {
     open = false;
@@ -32,7 +35,7 @@
   </button>
 </div>
 
-<Transition show={open}>
+<Transition show={open || false}>
   <Dialog {open} on:close={() => (open = false)} class="primary-nav-menu">
     <TransitionChild
       enter="obscure--enter"
@@ -117,20 +120,5 @@
 
   .hamburger::after {
     transform: translate3d(0, 6px, 0);
-  }
-
-  .toggled .hamburger {
-    transform: rotateZ(-45deg);
-  }
-
-  .toggled .hamburger::before {
-    transform: translate3d(0, 0, 0);
-  }
-
-  .toggled .hamburger::after {
-    transform: rotateZ(90deg) translate3d(0, 0, 0);
-  }
-
-  @media (min-width: 390px) {
   }
 </style>

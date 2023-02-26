@@ -13,5 +13,6 @@
     display: flex;
     height: 100%;
     align-items: center;
+    justify-content: space-between;
   }
 </style>
