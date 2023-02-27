@@ -1,0 +1,24 @@
+.obscure {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.65);
+
+  &--enter,
+  &--leave {
+    transition: opacity 180ms;
+  }
+
+  &--enterFrom,
+  &--leaveTo {
+    opacity: 0;
+  }
+
+  &--enterTo,
+  &--leaveFrom {
+    opacity: 1;
+  }
+}

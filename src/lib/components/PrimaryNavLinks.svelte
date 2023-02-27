@@ -12,10 +12,6 @@
       href: '/about',
       label: 'About',
     },
-    // {
-    //   href: '/contact',
-    //   label: 'Contact',
-    // },
   ];
 
   export let clickHandler = () => undefined;
@@ -29,7 +25,9 @@
   {/each}
 </ul>
 
-<style>
+<style lang="scss">
+  @use '$lib/styles/partials/screen-size';
+
   .list {
     display: flex;
     flex-wrap: wrap;
@@ -48,7 +46,7 @@
     padding: 0 8px;
   }
 
-  @media (min-width: 620px) {
+  @include screen-size.md {
     .item {
       width: auto;
     }

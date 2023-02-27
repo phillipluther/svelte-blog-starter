@@ -29,14 +29,11 @@
     "rehype-slug": "^5.1.0",
     "sass": "^1.58.3",
     "svelte": "^3.54.0",
+    "svelte-icons": "^2.1.0",
+    "title-case": "^3.0.3",
     "vite": "^4.0.0",
     "vitest": "^0.25.3"
   },
   "type": "module",
-  "dependencies": {
-    "svelte-icons": "^2.1.0",
-    "svelte-portal": "^2.2.0",
-    "title-case": "^3.0.3"
-  },
   "prettier": "@phillipluther/prettier-config"
 }

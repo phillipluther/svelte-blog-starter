@@ -1,7 +1,7 @@
 <script>
   import { fade } from 'svelte/transition';
   import Header from '$lib/components/Header.svelte';
-  import '$lib/styles/global.css';
+  import '$lib/styles/global.scss';
 
   export let data;
 </script>

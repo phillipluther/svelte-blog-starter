@@ -1,3 +1,5 @@
+@use "partials/screen-size";
+
 /* yup … i'm one of these people */
 * {
   box-sizing: border-box;
@@ -16,13 +18,13 @@ body {
   padding: 16px;
 }
 
-@media (min-width: 390px) {
+@include screen-size.sm {
   .container {
     padding: 24px;
   }
 }
 
-@media (min-width: 620px) {
+@include screen-size.md {
   .container {
     padding: 32px;
   }

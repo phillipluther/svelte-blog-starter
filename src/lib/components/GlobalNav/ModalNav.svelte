@@ -67,7 +67,7 @@
   </Dialog>
 </Transition>
 
-<style>
+<style lang="scss">
   .toggle {
     border: 0;
     border-radius: 50%;
@@ -85,40 +85,42 @@
     z-index: 20;
     transition: transform 180ms ease-in;
     transform: translate3d(0, 200%, 0);
-  }
 
-  .controls.showing {
-    transform: translate3d(0, 0, 0);
-  }
-
-  .hamburger,
-  .hamburger::before,
-  .hamburger::after {
-    display: block;
-    border-top: 3px solid black;
-    transition: transform 180ms;
+    &.showing {
+      transform: translate3d(0, 0, 0);
+    }
   }
 
   .hamburger {
-    position: relative;
-    width: 40%;
-    margin: 0 auto;
-  }
+    &,
+    &::before,
+    &::after {
+      display: block;
+      border-top: 3px solid black;
+      transition: transform 180ms;
+    }
 
-  .hamburger::before,
-  .hamburger::after {
-    content: '';
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-  }
+    & {
+      position: relative;
+      width: 40%;
+      margin: 0 auto;
+    }
 
-  .hamburger::before {
-    transform: translate3d(0, -6px, 0);
-  }
+    &::before,
+    &::after {
+      content: '';
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
 
-  .hamburger::after {
-    transform: translate3d(0, 6px, 0);
+    &::before {
+      transform: translate3d(0, -6px, 0);
+    }
+
+    &::after {
+      transform: translate3d(0, 6px, 0);
+    }
   }
 </style>

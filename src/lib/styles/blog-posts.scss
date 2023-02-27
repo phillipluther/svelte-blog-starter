@@ -1,0 +1,21 @@
+.icon-link {
+  position: relative;
+
+  &::before {
+    content: "#";
+    position: absolute;
+    left: -1ch;
+    top: 0;
+    line-height: 1;
+    opacity: 0;
+    text-decoration: underline;
+  }
+
+  h1:hover &::before,
+  h2:hover &::before,
+  h3:hover &::before,
+  h4:hover &::before,
+  h5:hover &::before {
+    opacity: 1;
+  }
+}

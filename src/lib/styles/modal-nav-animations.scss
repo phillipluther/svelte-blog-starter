@@ -1,0 +1,26 @@
+.modal-nav {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  background: white;
+
+  &--enter {
+    transition: transform 180ms ease-out, opacity 90ms;
+  }
+
+  &--leave {
+    transition: transform 120ms ease-in, opacity 120ms;
+  }
+
+  &--enterFrom,
+  &--leaveTo {
+    transform: translate3d(0, 100%, 0);
+  }
+
+  &--enterTo,
+  &--leaveFrom {
+    transform: translate3d(0, 0, 0);
+  }
+}
